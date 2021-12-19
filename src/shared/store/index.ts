@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import * as API from '../services/Api';
-
+// import reducers from '../store/reducers'
 // import 
 
 const epicMiddleware = createEpicMiddleware({
@@ -25,7 +25,7 @@ const configureStore = (initialState: any) => {
 
     const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
-    return createStore(reducers, initialState, enhancer)
+    // return createStore(reducers, initialState, enhancer)
 
 }
 

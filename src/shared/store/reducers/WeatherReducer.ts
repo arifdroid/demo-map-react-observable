@@ -1,3 +1,5 @@
-const initialState = {
-    ready
-}
+// const initialState = {
+//     ready
+// }
+
+export {}
