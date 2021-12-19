@@ -1,0 +1,9 @@
+.App-header {
+    /* background-color: #282c34; */
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    /* background: #fff; */
+    padding: 1rem;
+    z-index: 1;
+}
