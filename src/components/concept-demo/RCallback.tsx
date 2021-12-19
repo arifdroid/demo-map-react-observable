@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import List from './List';
 
 export default function RCallback() {
@@ -9,6 +9,11 @@ export default function RCallback() {
     const getItem = useCallback(() => {
         //without callback , this function being called each time we invoke the event
         //not efficient        
+        return [number, number + 1, number + 2];
+    }, [number])
+
+    const getItem_2 = useMemo(() => {
+        //use memo only for the array return, instead of the entire function        
         return [number, number + 1, number + 2];
     }, [number])
 
