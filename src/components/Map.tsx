@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { actions } from "../shared/store";
 import '../sytle/Map.css'
@@ -12,6 +12,10 @@ declare global {
 
 
 const Map: any = () => {
+
+    useEffect(()=>{
+        
+    },[])
 
     const mapRef = React.useCallback((node: any) => {
         if (node !== null) {
@@ -35,6 +39,7 @@ const Map: any = () => {
             script.type = "text/javascript";
             script.src =
                 `https://maps.googleapis.com/maps/api/js?key=${config.google_map_api_key}&callback=initMap`;
+                // "https://maps.googleapis.com/maps/api/js?key=AIzaSyC5YuDy_h-h-NYXTbw6VLghIaWFym6z98o&callback=initMap";
             script.async = true;
             document.body.appendChild(script);
             window.initMap = onLoaded;
