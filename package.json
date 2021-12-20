@@ -18,7 +18,8 @@
     "redux-observable": "^2.0.0",
     "rxjs": "^7.4.0",
     "typescript": "^4.5.4",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "typesafe-actions": "4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
