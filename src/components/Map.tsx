@@ -1,51 +1,62 @@
-import * as React from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { actions } from "../shared/store";
+import '../sytle/Map.css'
+import config from '../config';
 
 declare global {
-  interface Window {
-    initMap: Function;
-  }
+    interface Window {
+        initMap: Function;
+    }
 }
 
-export interface MapProps {}
 
-export const Map: React.SFC<MapProps> = () => {
-  const dispatch = useDispatch();
-//   const mapReady = React.useCallback(() => dispatch(actions.mapReadyAction()), [dispatch]);
-//   const getWeather = React.useCallback(
-//     (lat: number, lng: number) => dispatch(actions.weatherGetAction(lat, lng)),
-//     [dispatch]
-//   );
-  const mapRef = React.useCallback((node: HTMLDivElement) => {
-    if (node !== null) {
-      const onLoaded = () => {
-        const map = new google.maps.Map(node, {
-          center: { lat: 35.6811673, lng: 139.7648629 }, // default is Tokyo station!!
-          zoom: 8,
-          mapTypeControl: false,
-          disableDoubleClickZoom: false,
-          fullscreenControl: false,
-          keyboardShortcuts: false,
-          streetViewControl: false,
-          scaleControl: false,
-          rotateControl: false,
-          panControl: false,
-        });
-        // map.addListener("click", (e) => {
-        //   getWeather(e.latLng.lat(), e.latLng.lng());
-        // });
-        // mapReady();
-      };
-      // remove this key when you run it on your localhost.
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src =
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyC5YuDy_h-h-NYXTbw6VLghIaWFym6z98o&callback=initMap";
-      script.async = true;
-      document.body.appendChild(script);
-      window.initMap = onLoaded;
-    }
-  }, []);
-  return <div id="map" ref={mapRef} />;
+const Map: any = () => {
+
+    useEffect(()=>{
+        
+    },[])
+
+    const mapRef = React.useCallback((node: any) => {
+        if (node !== null) {
+            const onLoaded = () => {
+                const map = new google.maps.Map(node, {
+                    center: { lat: 3.074107, lng: 101.492219 },
+                    zoom: 13,
+                    mapTypeControl: false,
+                    disableDoubleClickZoom: false,
+                    fullscreenControl: false,
+                    keyboardShortcuts: false,
+                    streetViewControl: false,
+                    scaleControl: false,
+                    rotateControl: false,
+                    panControl: false,
+                });
+
+            };
+            // remove this key when you run it on your localhost.
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src =
+                `https://maps.googleapis.com/maps/api/js?key=${config.google_map_api_key}&callback=initMap`;
+                // "https://maps.googleapis.com/maps/api/js?key=AIzaSyC5YuDy_h-h-NYXTbw6VLghIaWFym6z98o&callback=initMap";
+            script.async = true;
+            document.body.appendChild(script);
+            window.initMap = onLoaded;
+        }
+    }, []);
+    return (
+
+        // <div>hello map</div>
+        <div id="map" ref={mapRef} />
+    );
 };
+
+export default Map;
+
+// const MapsDef = () =>{
+//     return <div>maps def</div>
+// }
+
+
+// export default MapsDef;
